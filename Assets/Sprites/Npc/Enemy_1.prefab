@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3674461585721032717}
   - component: {fileID: 7649132630117566185}
   - component: {fileID: 8627583719404278499}
-  - component: {fileID: 1272125214211727711}
   - component: {fileID: 4998151401576335814}
   - component: {fileID: 5594991518052574582}
+  - component: {fileID: -1090771489962375597}
   m_Layer: 0
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -151,19 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1272125214211727711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123573519390124082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e890166be3d280a4f933c5c530adae89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
 --- !u!114 &4998151401576335814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
+--- !u!114 &-1090771489962375597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123573519390124082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5bafa0d4a12814cb8c22b8d917780d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  isLarge: 0
