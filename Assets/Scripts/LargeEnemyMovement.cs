@@ -4,78 +4,104 @@ using UnityEngine;
 
 public class LargeEnemyMovement : MonoBehaviour
 {
+	// Component for physics calculations
     private Rigidbody2D physicsBody;
-	private Vector2 playerPosition, initPos;
-	private float radian, evenmoremath;
+	// Store players position and initial position for gameobject
+	private Vector2 targetPos, initPos;
+	// enemy rotation speed
     public float speed = 5;
-	// Use this for initialization
+	// player object
 	private GameObject playerObj = null;
+
+	// runs at when program is initialized
 	void Start(){
+		// finds the player object by looking for tag
 		playerObj = GameObject.FindGameObjectWithTag("Player");
 
+		// stores the initial position of the game object
         initPos = transform.position;
+		// Moves the position of enemy to avoid some warning messages
         transform.position = new Vector3(transform.position.x-1, transform.position.y+1, 0);
 
+		// Get the Rigidbody2D component attached to this GameObject
 		physicsBody = GetComponent<Rigidbody2D>();
 	}
-	//12345678901234567890123456789012345678901234567890123456789012345678901234567890
-	//I dont knwo what im doing anymore
+
 	// Update is called once per frame
 	void Update () {
 
+		// Stores player's current position 
 		float[] player = {playerObj.transform.position.x,
 						  playerObj.transform.position.y};
 
+		// Store enemy's current position
 		float[] enemy = {this.transform.position.x, this.transform.position.y};
 
+		// Store enemy's initial position
         float[] init2 = {initPos.x, initPos.y};
 
+		float[] temp;
+
+		// Check if player is currently within a radius of X
+		// If the player is within the given radius, will chase player
+		// If not it will return to its Origin point
         if(InRange(player, enemy)){
-            float[] temp = angle(player, enemy);
-            evenmoremath = Rotation(player, enemy, temp[2]);
-            targetting(evenmoremath);
-            playerPosition = new Vector2(temp[0], temp[1]);
+			// Calls angle to find angle of rotation to player
+            temp = angle(player, enemy);
         }else{
-            float[] temp = angle(init2, enemy);
-            evenmoremath = Rotation(init2, enemy, temp[2]);
-            targetting(evenmoremath);
-            playerPosition = new Vector2(temp[0], temp[1]);
-        }   
+			// Calls angle to find angle of rotation to Origin point
+            temp = angle(init2, enemy);
+        }
+
+		//Rotates towards Origin
+        targetting(temp[2]);
+
+		// Moves towards Origin point
+        targetPos = new Vector2(temp[0], temp[1]);
 	}
 
+	/*
+	Takes two values 
+	Player array which has current X and Y pos
+	Enemy array which has current X and Y pos
+	*/
 	public float[] angle(float[] player, float[] enemy){
+		
+		// Calculates difference between x and Y values 
 		float xvalue = player[0] - enemy[0];
 		float yvalue = player[1] - enemy[1];
 
-		radian = MathF.Atan(yvalue/xvalue);
+		// Calculate the angle in radians using Atan
+		// And converts radians back to degrees
+		float radian = MathF.Atan(yvalue/xvalue)*Mathf.Rad2Deg;
 
+		// Adjust rotation based on the relative position of player and enemy
+		if(player[0] < enemy[0] && player[1] < enemy[1]){
+			radian+= 90;
+		}else if(player[0] > enemy[0] && player[1] < enemy[1]){
+			radian-= 90;
+		}else if(player[0] > enemy[0] && player[1] > enemy[1]){
+			radian-= 90;
+		}else{
+			radian+= 90;
+		}
+
+		// return the difference Between X, Y, and the Degree to rotate
 		float[] output = {xvalue, yvalue, radian};
-
 		return output;
 	}
 
-	public float Rotation(float[] player, float[] enemy, float radian){
-        
-        float initangle = (float)radian*Mathf.Rad2Deg;
-
-		if(player[0] < enemy[0] && player[1] < enemy[1]){
-			evenmoremath = initangle + 90;
-		}else if(player[0] > enemy[0] && player[1] < enemy[1]){
-			evenmoremath = initangle - 90;
-		}else if(player[0] > enemy[0] && player[1] > enemy[1]){
-			evenmoremath = initangle - 90;
-		}else{
-			evenmoremath = initangle + 90;
-		}
-		return evenmoremath;
-	}
-
+	// Is used to determin wether or not player is within chasing range
+	// By calculating distance between two objects, using Dot product
     public bool InRange(float[] player, float[] enemy){
+		// Calculate distance using Pythagorean theorem
         float xvalue = Mathf.Pow(player[0]-enemy[0], 2);
         float yvalue = Mathf.Pow(player[1]-enemy[1], 2);
 
+		// Get the square root of the sum to find the distance
         float distance = Mathf.Sqrt(xvalue+yvalue);
 
+		// Return true if the distance is less than or equal to 5 units
         if (distance <= 5){
             return true;
         }else{
@@ -83,12 +109,17 @@ public class LargeEnemyMovement : MonoBehaviour
         }
     }
 
-	public void targetting(float playerRotation){
-
-		Quaternion target = Quaternion.Euler(0, 0, playerRotation);
+	// Rotates Gameobject Towards Given Target
+	public void targetting(float Rotation){
+	
+		// Create a quaternion to rotate the enemy towards the target angle
+		Quaternion target = Quaternion.Euler(0, 0, Rotation);
+		// Smoothly rotate the enemy towards the target using Slerp
 		transform.rotation = Quaternion.Slerp(transform.rotation, 
 											  target, Time.deltaTime*speed);
-                                              
+	
+		/* ---To be implemented later---
+
 		float Rotation;
 		if (transform.eulerAngles.z <= 180f){
 			Rotation = transform.eulerAngles.z;
@@ -96,14 +127,17 @@ public class LargeEnemyMovement : MonoBehaviour
 			Rotation = transform.eulerAngles.z - 360f;
 		}
 
-		if(Rotation <= playerRotation+5f && Rotation >= playerRotation-5f){
+		if(Rotation <= Rotation+5f && Rotation >= Rotation-5f){
 			//Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAaaAAAAAAAAAAAAAAAaaaaAAAA");
 		}
+		*/
 
 	}
 
+	// Called at a fixed time interval
 	private void FixedUpdate() 
     {   
-        physicsBody.AddForce(playerPosition);
+		// Apply force to move towards targetted position
+        physicsBody.AddForce(targetPos);
     }
 }
