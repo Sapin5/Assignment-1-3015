@@ -8,9 +8,8 @@ public class EnemyMovement : MonoBehaviour
     private Rigidbody2D physicsBody;
 	// Store players position and initial position for gameobject
 	private Vector2 targetPos, initPos;
-	// enemy rotation speed
+	// rotation speed
     public float speed = 5;
-
 	public bool isLarge;
 	// player object
 	private GameObject playerObj = null;
