@@ -9,10 +9,12 @@ public class Spawner : MonoBehaviour
     private float[] validSpawn = {-8.8f, 8.8f};
     void Update()
     {   
-        counter += 1;
-        if(counter >= interval){
-            counter = 0;
-            Instantiate(enemyPrefab[0], new UnityEngine.Vector3(SpawnLocation(validSpawn), 6f, 0), transform.rotation);
+        if(StartGame.start == true){
+            counter += 1;
+            if(counter >= interval){
+                counter = 0;
+                Instantiate(enemyPrefab[0], new UnityEngine.Vector3(SpawnLocation(validSpawn), 6f, 0), transform.rotation);
+            }
         }
     }
 
