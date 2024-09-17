@@ -33,16 +33,32 @@ public class StartGame : MonoBehaviour
         WinScreen.SetActive(false);
     }
 
+    // calls once per frame
     void Update(){
+        // calls playerHP to see how much they have left
         int hp = PlayerDeath.singleton.PlayerHP();
+
+        // Lose if HPis 0
         if(hp <= 0){
+            // ADjust Timescale to stop everythin that wasnt removed from moving
             Time.timeScale = 0;
+            // Sets GameEnds to true which will cause remaining Gameobjects
+            // Remove themselves from game
             GameEnds = true;
+
+            // Switches canvas to display lose message
             Endscreen.SetActive(true);
         }
+
+        // Win if both Bosses are elimnated
         if(bossCount <= 0){
+            // Sets GameEnds to true which will cause remaining Gameobjects
+            // Remove themselves from game
             GameEnds = true;
+            // ADjust Timescale to stop everythin that wasnt removed from moving
             Time.timeScale = 0;
+
+            // Switches canvas to display win message
             WinScreen.SetActive(true);
         }
     }
