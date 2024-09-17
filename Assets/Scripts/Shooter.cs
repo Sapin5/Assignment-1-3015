@@ -12,7 +12,7 @@ public class Shooter : MonoBehaviour
     // Controls wehter or not player is firing
     private bool isFiringButtonDown = false;
     // Force applied to bullet in order to propell it forwards on spawn
-    public float shootForce = 10f;
+    public float shootForce = 1f;
     // How long bullet stays around before being removed 
     // if it hasnt hit anything
     public float bulletDeathTimer = 1f;
@@ -55,7 +55,7 @@ public class Shooter : MonoBehaviour
         Rigidbody2D rg = Instantiate<Rigidbody2D>(projectilePrefab, transform.position,
                                                      player.transform.rotation);
         // Applies force to bullet to proell it in a direction 
-        rg.AddRelativeForce(shootForce * Vector2.up);
+        rg.AddRelativeForce(10*shootForce * Vector2.up);
         // Removes Bulllet afeter Given amount of time
         Destroy(rg.gameObject, bulletDeathTimer+10);
     }

@@ -30,7 +30,10 @@ public class EnemyMovement : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
-
+		if(StartGame.GameEnds == true){
+			Destroy(gameObject);
+			return;
+		}
 		// Stores player's current position 
 		float[] player = {playerObj.transform.position.x,
 						  playerObj.transform.position.y};

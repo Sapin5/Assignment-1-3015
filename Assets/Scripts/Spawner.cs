@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
     void Update()
     {   
         // Runs only when the game has started
-        if(StartGame.start == true){
+        if(StartGame.start == true && StartGame.GameEnds==false){
             // Increments counter to track wether or not enemy should spawn
             counter += 1;
             // if counter is eual to interval it will spawn an enemy

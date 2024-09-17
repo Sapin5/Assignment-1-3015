@@ -14,12 +14,13 @@ public class BossDeath : MonoBehaviour
         // If the object it collided with is a bullet lowers HP by 1
         if(collision.gameObject.CompareTag("Bullet")){
             healthPoints-=1;
+            Debug.Log(healthPoints);
         }
 
         // Destroys gameobject (boss) once HP hits 0
         if(healthPoints <= 0){
-            Destroy(this.gameObject);
-
+            Destroy(gameObject);
+            StartGame.bossCount-=1;
             // Creates explosion game object
             Instantiate(explosionGo, transform.position, transform.rotation);
         }
