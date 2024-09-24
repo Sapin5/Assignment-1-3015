@@ -33,39 +33,40 @@ public class EnemyMovement : MonoBehaviour
 		if(StartGame.GameEnds == true){
 			Destroy(gameObject);
 			return;
-		}
-		// Stores player's current position 
-		float[] player = {playerObj.transform.position.x,
-						  playerObj.transform.position.y};
-
-		// Store enemy's current position
-		float[] enemy = {this.transform.position.x, this.transform.position.y};
-
-		// Store enemy's initial position
-        float[] init2 = {initPos.x, initPos.y};
-
-		float[] temp;
-
-		if(isLarge){
-			// Check if player is currently within a radius of X
-			// If the player is within the given radius, will chase player
-			// If not it will return to its Origin point
-			if(InRange(player, enemy)){
-				// Calls angle to find angle of rotation to player
-				temp = angle(player, enemy);
-			}else{
-				// Calls angle to find angle of rotation to Origin point
-				temp = angle(init2, enemy);
-			}
 		}else{
-			temp = angle(player, enemy);
+			// Stores player's current position 
+			float[] player = {playerObj.transform.position.x,
+							playerObj.transform.position.y};
+
+			// Store enemy's current position
+			float[] enemy = {this.transform.position.x, this.transform.position.y};
+
+			// Store enemy's initial position
+			float[] init2 = {initPos.x, initPos.y};
+
+			float[] temp;
+
+			if(isLarge){
+				// Check if player is currently within a radius of X
+				// If the player is within the given radius, will chase player
+				// If not it will return to its Origin point
+				if(InRange(player, enemy)){
+					// Calls angle to find angle of rotation to player
+					temp = angle(player, enemy);
+				}else{
+					// Calls angle to find angle of rotation to Origin point
+					temp = angle(init2, enemy);
+				}
+			}else{
+				temp = angle(player, enemy);
+			}
+
+			//Rotates towards Origin
+			targetting(temp[2]);
+
+			// Moves towards Origin point
+			targetPos = new Vector2(temp[0], temp[1]);
 		}
-
-		//Rotates towards Origin
-        targetting(temp[2]);
-
-		// Moves towards Origin point
-        targetPos = new Vector2(temp[0], temp[1]);
 	}
 
 	/*
