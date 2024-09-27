@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1212816018503702055}
   - component: {fileID: 1972012959089799886}
   - component: {fileID: -3455353028304335836}
-  - component: {fileID: -6677367930054640531}
+  - component: {fileID: 2893294837661093443}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Untagged
@@ -163,7 +163,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &-6677367930054640531
+  isLarge: 0
+--- !u!114 &2893294837661093443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,8 +173,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 996976147912265442}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ec2817b496de246a27435f7fa9c9d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 28d800ca26a3ae840892899420492c9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 10
   explosionGo: {fileID: 7901304949833717338, guid: 9bd37f45d1668bc4782cd9c4bcc63fdf, type: 3}
+  healthPoints: 10
+  isBoss: 1
