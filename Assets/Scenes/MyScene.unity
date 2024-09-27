@@ -385,11 +385,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107717182}
   m_CullTransparentMesh: 1
---- !u!1 &135029319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 996976147912265442, guid: 4091006d9c7bc6b4993498a3d70484f8, type: 3}
-  m_PrefabInstance: {fileID: 147291187}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &147291187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,14 +481,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -6677367930054640531, guid: 4091006d9c7bc6b4993498a3d70484f8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 996976147912265442, guid: 4091006d9c7bc6b4993498a3d70484f8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1683714066}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4091006d9c7bc6b4993498a3d70484f8, type: 3}
 --- !u!1 &186776171
 GameObject:
@@ -694,6 +685,38 @@ Transform:
   - {fileID: 1050054053}
   - {fileID: 1802180955}
   m_Father: {fileID: 1380716569}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &212748935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 212748936}
+  m_Layer: 0
+  m_Name: AsteroidSpawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &212748936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212748935}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.29804006, y: 0.63790995, z: 0.25173807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 682977125}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &261917387 stripped
 Transform:
@@ -1127,6 +1150,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionGo: {fileID: 7901304949833717338, guid: 9bd37f45d1668bc4782cd9c4bcc63fdf, type: 3}
+--- !u!1 &682977124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 682977125}
+  - component: {fileID: 682977126}
+  m_Layer: 0
+  m_Name: Spawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &682977125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682977124}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.8, z: 0.020643622}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 212748936}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &682977126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682977124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98524745c544a544dada491865cbb733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab:
+  - {fileID: 7123573519390124082, guid: ffa076b6563d32e40ac89e313066117e, type: 3}
+  interval: 350
 --- !u!1 &748096711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1811,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1380716565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2450,21 +2520,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8151258028331567230, guid: 4091006d9c7bc6b4993498a3d70484f8, type: 3}
   m_PrefabInstance: {fileID: 147291187}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1683714066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135029319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d800ca26a3ae840892899420492c9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionGo: {fileID: 7901304949833717338, guid: 9bd37f45d1668bc4782cd9c4bcc63fdf, type: 3}
-  healthPoints: 10
-  isBoss: 1
 --- !u!1 &1742926628
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,3 +3285,4 @@ SceneRoots:
   - {fileID: 748096713}
   - {fileID: 1436154878}
   - {fileID: 1380716569}
+  - {fileID: 212748936}
