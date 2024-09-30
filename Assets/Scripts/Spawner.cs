@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
                 // Resets Counter to restart count cycle
                 counter = 0;
                 // Instantiates new enemy
-                Instantiate(enemyPrefab[0], new Vector3(SpawnLocation(validSpawn), 6f, 0), transform.rotation);
+                Instantiate(enemyPrefab[0], new Vector3(SpawnLocation(validSpawn), transform.position.y, 0), transform.rotation);
             }
         }
     }
