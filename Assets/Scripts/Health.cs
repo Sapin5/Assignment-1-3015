@@ -21,15 +21,7 @@ public class Health : MonoBehaviour
         {
             float damage = damageDealer.GetDamage();
             healthPoints-=damage;
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision){
-        Damage damageDealer = collision.gameObject.GetComponent<Damage>();
-        if (damageDealer != null)
-        {
-            float damage = damageDealer.GetDamage();
-            healthPoints-=damage;
+            debugmsg();
         }
     }
 
