@@ -36,19 +36,19 @@ public class StartGame : MonoBehaviour
     // calls once per frame
     void Update(){
         // calls playerHP to see how much they have left
-        int hp = PlayerDeath.singleton.PlayerHP();
+        //int hp = PlayerDeath.singleton.PlayerHP();
 
         // Lose if HPis 0
-        if(hp <= 0){
+        //if(hp <= 0){
             // ADjust Timescale to stop everythin that wasnt removed from moving
-            Time.timeScale = 0;
+           // T/ime.timeScale = 0;
             // Sets GameEnds to true which will cause remaining Gameobjects
             // Remove themselves from game
-            GameEnds = true;
+          //  GameEnds = true;
 
             // Switches canvas to display lose message
-            Endscreen.SetActive(true);
-        }
+           // Endscreen.SetActive(true);
+       // }
 
         // Win if both Bosses are elimnated
         if(bossCount <= 0){

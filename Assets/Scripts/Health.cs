@@ -20,8 +20,6 @@ public class Health : MonoBehaviour
         if (damageDealer != null)
         {
             float damage = damageDealer.GetDamage();
-
-            Debug.Log(damage);
             healthPoints-=damage;
         }
     }
@@ -31,8 +29,6 @@ public class Health : MonoBehaviour
         if (damageDealer != null)
         {
             float damage = damageDealer.GetDamage();
-
-            Debug.Log(damage);
             healthPoints-=damage;
         }
     }
