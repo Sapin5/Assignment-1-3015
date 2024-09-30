@@ -32,4 +32,8 @@ public class Health : MonoBehaviour
             healthPoints-=damage;
         }
     }
+
+    private void debugmsg(){
+        Debug.Log(this.healthPoints);
+    }
 }
