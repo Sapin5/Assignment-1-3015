@@ -4,7 +4,6 @@ public class EnemyDeath : MonoBehaviour
     // Explosion prefab hodler 
     public GameObject explosionGo;
     public int healthPoints;
-
     public bool isBoss = false;
     
     // Detects Collsions in order to destroy itself 

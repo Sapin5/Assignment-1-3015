@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3674461585721032717}
   - component: {fileID: 7649132630117566185}
   - component: {fileID: 8627583719404278499}
-  - component: {fileID: 4998151401576335814}
-  - component: {fileID: 5594991518052574582}
   - component: {fileID: -1090771489962375597}
-  m_Layer: 0
+  - component: {fileID: -927553060115212865}
+  - component: {fileID: -7506268880648209113}
+  m_Layer: 8
   m_Name: Enemy_1
-  m_TagString: Enemy
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,31 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4998151401576335814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123573519390124082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 672ccbf73aad93f46b16444b51c63230, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5594991518052574582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123573519390124082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d800ca26a3ae840892899420492c9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
 --- !u!114 &-1090771489962375597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +165,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   isLarge: 0
+--- !u!114 &-927553060115212865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123573519390124082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e717f470e5a446498b2417faebb52cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
+--- !u!114 &-7506268880648209113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123573519390124082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39104c605c4a8964797f99881821fdc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 2
+  explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}

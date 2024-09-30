@@ -12,4 +12,12 @@ public class BulletHit : MonoBehaviour
         // Removes this Gameobject from the game
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D collider){
+        // Creates explosion game object
+        Instantiate(explosionGo, transform.position, transform.rotation);
+        // Removes this Gameobject from the game
+        Destroy(gameObject);
+        Destroy(collider.gameObject);
+    }
 }

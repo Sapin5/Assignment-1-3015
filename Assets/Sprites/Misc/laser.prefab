@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: -6174220802620811583}
   - component: {fileID: 5722317564353459164}
   - component: {fileID: 7908917213730856434}
-  - component: {fileID: -3135213105902714835}
+  - component: {fileID: 6475436207519712686}
+  - component: {fileID: -1523638004350685930}
   m_Layer: 0
   m_Name: laser
   m_TagString: Bullet
@@ -159,7 +160,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.13}
   m_EdgeRadius: 0
---- !u!114 &-3135213105902714835
+--- !u!114 &6475436207519712686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7221164559675293276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e717f470e5a446498b2417faebb52cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageDealt: 1
+--- !u!114 &-1523638004350685930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,4 +186,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
-  bullet: {fileID: 7221164559675293276}

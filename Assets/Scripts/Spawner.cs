@@ -5,7 +5,7 @@ public class Spawner : MonoBehaviour
     // List of enemy game objects
     public GameObject[] enemyPrefab;
     // Spawn interval
-    public float interval = 100;
+    public float timer;
     // Counter for spawning
     private float counter = 0;
     // Valid X cordinate spawn points
@@ -15,14 +15,11 @@ public class Spawner : MonoBehaviour
     {   
         // Runs only when the game has started
         if(StartGame.start == true && StartGame.GameEnds==false){
-            // Increments counter to track wether or not enemy should spawn
-            counter += 1;
-            // if counter is eual to interval it will spawn an enemy
-            if(counter >= interval){
-                // Resets Counter to restart count cycle
+            counter += Time.deltaTime;
+            if (counter >= timer){
+                    Instantiate(enemyPrefab[0], new Vector3(SpawnLocation(validSpawn),
+                                        transform.position.y, 0), transform.rotation);
                 counter = 0;
-                // Instantiates new enemy
-                Instantiate(enemyPrefab[0], new Vector3(SpawnLocation(validSpawn), transform.position.y, 0), transform.rotation);
             }
         }
     }

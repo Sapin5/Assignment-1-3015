@@ -5,11 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - BorderTop
-  - BorderBottom
-  - BorderLeft
-  - BorderRight
   - Bullet
+  - Red
   layers:
   - Default
   - TransparentFX

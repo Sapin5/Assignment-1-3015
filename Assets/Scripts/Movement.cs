@@ -7,8 +7,8 @@ public class Movement : MonoBehaviour
     private Rigidbody2D physicsBody;
 	// Store players position and mouse position
 	private Vector2 targetPos, mousePosition;
-	// rotation speed
-	[SerializeField] private float speed = 5;
+	// rotation rotationSpeed
+	[SerializeField] private float rotationSpeed = 5;
 	// Movement force
 	public Vector2 moveForce = new(1f, 1f);
 	// Player game object prefab holder
@@ -53,10 +53,10 @@ public class Movement : MonoBehaviour
 		float[] temp = angle(player, mouse);
 		
 		// Rotates towards Nouse 
-		targetting(temp[2]);
+		targetting(temp[0]);
 
 		// Creates 2D vector which will be used to move player towards mouse
-		targetPos = new Vector2(temp[0], temp[1]);
+		targetPos = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 	}
 
 	/*
@@ -87,7 +87,7 @@ public class Movement : MonoBehaviour
 		}
 
 		// return the difference Between X, Y, and the Degree to rotate
-		float[] output = {xvalue, yvalue, radian};
+		float[] output = {radian};
 		return output;
 	}
 
@@ -97,10 +97,10 @@ public class Movement : MonoBehaviour
 		Quaternion target = Quaternion.Euler(0, 0, mouseR);
 		// Smoothly rotate the enemy towards the target using Slerp
 		transform.rotation = Quaternion.Slerp(transform.rotation, 
-											  target, Time.deltaTime*speed);
+											  target, Time.deltaTime*rotationSpeed);
 	}
 
-	// Returns Players current speed
+	// Returns Players current rotationSpeed
 	public float totalspeed(){
 		// Converts all values to positive
 		float temmp = Mathf.Abs(targetPos[1]);
