@@ -397,6 +397,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astroid (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 242201043021604453, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
+      propertyPath: m_TagString
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664979404544889040, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8972598898197567083, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.9421678
@@ -689,7 +697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 324536706}
   - component: {fileID: 324536707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 478617540}
   - component: {fileID: 478617541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1316,7 +1324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843319340}
   - component: {fileID: 843319341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2057,7 +2065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1428934026}
   - component: {fileID: 1428934027}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2408,6 +2416,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astroid
       objectReference: {fileID: 0}
+    - target: {fileID: 242201043021604453, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
+      propertyPath: m_TagString
+      value: Red
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664979404544889040, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8972598898197567083, guid: b023e8de52d88244a958bceb3b2a1269, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2877355
@@ -2463,7 +2479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1602073471}
   - component: {fileID: 1602073472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boosters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2850,6 +2866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7123573519390124082, guid: ffa076b6563d32e40ac89e313066117e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8119323303069506555, guid: ffa076b6563d32e40ac89e313066117e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.8394117
@@ -2895,6 +2915,52 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffa076b6563d32e40ac89e313066117e, type: 3}
+--- !u!1 &1974557926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1974557927}
+  - component: {fileID: 1974557928}
+  m_Layer: 6
+  m_Name: StateMachine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1974557927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974557926}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0069999993, y: 0.353, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 261917387}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1974557928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974557926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c68ca92549a4cc4b93576dfd7101730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  firingState: 0
 --- !u!1 &2077093644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2905,7 +2971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2077093645}
   - component: {fileID: 2077093646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3157,6 +3223,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2162993171582731129, guid: 7cec1ecf4077c0b44a38ea2f1e7de9a7, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2162993171582731129, guid: 7cec1ecf4077c0b44a38ea2f1e7de9a7, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -3249,6 +3319,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4413833876236830449, guid: 7cec1ecf4077c0b44a38ea2f1e7de9a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 843319340}
+    - targetCorrespondingSourceObject: {fileID: 4413833876236830449, guid: 7cec1ecf4077c0b44a38ea2f1e7de9a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974557927}
     - targetCorrespondingSourceObject: {fileID: 4413833876236830449, guid: 7cec1ecf4077c0b44a38ea2f1e7de9a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 478617540}
