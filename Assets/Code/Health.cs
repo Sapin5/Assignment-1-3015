@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
         {
             float damage = damageDealer.GetDamage();
             TakeEnemyDmg(damage);
-            debugmsg();
+            //Debugmsg();
         }
     }
 
@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void debugmsg(){
+    private void Debugmsg(){
         Debug.Log(this.healthPoints);
     }
 }

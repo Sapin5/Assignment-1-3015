@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 10
   explosionGo: {fileID: 7901304949833717338, guid: 9bd37f45d1668bc4782cd9c4bcc63fdf, type: 3}
+  hasHp: 1
   hpbar: {fileID: 2558696398078296559}
 --- !u!1001 &8650060665409280865
 PrefabInstance:

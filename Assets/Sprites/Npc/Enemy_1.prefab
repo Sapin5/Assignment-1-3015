@@ -159,7 +159,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7123573519390124082}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce5bafa0d4a12814cb8c22b8d917780d, type: 3}
   m_Name: 
@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 2
   explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
+  hasHp: 1
   hpbar: {fileID: 8657284985010674839}
 --- !u!1001 &2570915859118261785
 PrefabInstance:

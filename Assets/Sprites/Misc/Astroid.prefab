@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6664734157827044849}
   m_Layer: 9
   m_Name: Astroid
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,12 +124,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242201043021604453}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 333779f5dcab6c44fba9bbcd4493a656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveforce: {x: 0, y: -0.05}
+  moveforce: {x: 0, y: 0}
   astroid: {fileID: 6645282806300492038}
 --- !u!58 &5383562103620518164
 CircleCollider2D:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 242201043021604453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe255daf2c33cd24daf58051e594b3df, type: 3}
   m_Name: 
@@ -206,3 +206,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 1
   explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
+  hasHp: 0
+  hpbar: {fileID: 0}
