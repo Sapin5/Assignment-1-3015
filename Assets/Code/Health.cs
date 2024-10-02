@@ -9,6 +9,12 @@ public class Health : MonoBehaviour
 
     [SerializeField] private GameObject explosionGo;
 
+    public GameObject hpbar;
+    private float totalhp;
+    void Awake(){
+        totalhp = healthPoints;
+    }
+
     public void Update(){
         if(healthPoints<=0f){
             Instantiate(explosionGo, transform.position, transform.rotation);
@@ -20,9 +26,14 @@ public class Health : MonoBehaviour
         if (damageDealer != null)
         {
             float damage = damageDealer.GetDamage();
-            healthPoints-=damage;
+            TakeEnemyDmg(damage);
             debugmsg();
         }
+    }
+
+    public void TakeEnemyDmg(float damage){
+        healthPoints-=damage;
+        hpbar.transform.localScale = new Vector2(healthPoints/totalhp, 1);
     }
 
     private void debugmsg(){
