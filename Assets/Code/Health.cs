@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     [SerializeField] private float healthPoints;
 
     [SerializeField] private GameObject explosionGo;
-
+    [SerializeField] private bool hasHp;
     public GameObject hpbar;
     private float totalhp;
     void Awake(){
@@ -33,7 +33,9 @@ public class Health : MonoBehaviour
 
     public void TakeEnemyDmg(float damage){
         healthPoints-=damage;
-        hpbar.transform.localScale = new Vector2(healthPoints/totalhp, 1);
+        if(hasHp){
+            hpbar.transform.localScale = new Vector2(healthPoints/totalhp, 1);
+        }
     }
 
     private void debugmsg(){
