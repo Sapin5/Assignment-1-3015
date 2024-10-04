@@ -11,13 +11,17 @@ public class EnemyMovement : MonoBehaviour
 	private Vector2 targetPos, initPos;
 	// rotation speed
     public float speed = 5;
+	// Bool for wether or not enemy is alrge type or small
 	public bool isLarge;
 	// player object
 	private GameObject playerObj = null;
+
+	// Enemy has different shooting mechanics
 	public GameObject enemyShooter;
 
 	// runs at when program is initialized
 	void Start(){
+		//Disables enemy shooter
 		enemyShooter.SetActive(false);
 		// finds the player object by looking for tag
 		playerObj = GameObject.FindGameObjectWithTag("Player");
@@ -65,6 +69,7 @@ public class EnemyMovement : MonoBehaviour
 			}
 
 			//Rotates towards Origin
+			// Checks if player is within 5 units to the player
 			Targetting(temp[2], InRange(player, enemy, 5));
 			// Moves towards Origin point
 			targetPos = new Vector2(temp[0]/2, temp[1]/2);
@@ -127,6 +132,8 @@ public class EnemyMovement : MonoBehaviour
 		// Smoothly rotate the enemy towards the target using Slerp
 		transform.rotation = Quaternion.Slerp(transform.rotation, 
 											  target, Time.deltaTime*speed);
+		
+		// temp holds the enemies current rotation
 		float _temp;
 		if (transform.eulerAngles.z <= 180f){
 			_temp = transform.eulerAngles.z;
@@ -134,11 +141,23 @@ public class EnemyMovement : MonoBehaviour
 			_temp = transform.eulerAngles.z - 360f;
 		}
 		
+		/*
+			Compares rotation to _temp. Rotation represents the angle
+			which the enemy has to turn to face the player, _temp is players
+			current rotation. if the player is within +- 20 degrees from 
+			the target rotation enemy will be allowed to fire, As long as they
+			are also within firing range.
+		*/
 		if(Rotation <= _temp+20f && _temp-20f <= Rotation && inRange){
+			// Gets the Sprite Render Componant and switches colour to red
+			// To represent iits within firing range
 			gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+			// enables enemyShooter
 			enemyShooter.SetActive(true);
 		}else{
+			// Changes sprite colour back to white to represent its out of range
 			gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+			// Hides enemyShooter to disable shooitng
 			enemyShooter.SetActive(false);
 		}
 

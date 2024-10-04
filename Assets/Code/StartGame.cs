@@ -20,6 +20,7 @@ public class StartGame : MonoBehaviour
     void Awake(){
         Time.timeScale = 0;
         Endscreen.SetActive(false);
+        playerObj.SetActive(false);
         hp = playerObj.GetComponent<Health>().RemainingHP();
     }
 
@@ -29,6 +30,7 @@ public class StartGame : MonoBehaviour
         start=true;
         // Sets time scale to 1 which allows game to start running
         Time.timeScale= 1;
+        playerObj.SetActive(true);
 
         // Disables start screen
         startscreen.SetActive(false);
@@ -62,4 +64,15 @@ public class StartGame : MonoBehaviour
             WinScreen.SetActive(true);
         }
     }
+
+    public void ResetGame(){
+        playerObj.GetComponent<Health>().setHP();
+        hp = playerObj.GetComponent<Health>().RemainingHP();
+        playerObj.SetActive(false);
+        startscreen.SetActive(true);
+        Endscreen.SetActive(false);
+        GameEnds = false;
+    }
+
+
 }
