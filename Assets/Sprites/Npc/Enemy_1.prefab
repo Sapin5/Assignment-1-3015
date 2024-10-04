@@ -196,6 +196,7 @@ MonoBehaviour:
   healthPoints: 2
   explosionGo: {fileID: 8747660532981222766, guid: 3d6590da3424e4a4e8e768cea6340ed4, type: 3}
   hasHp: 1
+  isPlayer: 0
   hpbar: {fileID: 8657284985010674839}
 --- !u!1001 &2570915859118261785
 PrefabInstance:
@@ -355,7 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5722317564353459164, guid: 76f37562a0cdc9c4da917412400b4f66, type: 3}
-  firerate: 0.3
+  firerate: 1.5
   shootForce: 1
   bulletDeathTimer: 1
   player: {fileID: 0}

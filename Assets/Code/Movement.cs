@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
 	}
 
 	// Returns Players current rotationSpeed
-	public float totalspeed(){
+	public float Totalspeed(){
 		// Converts all values to positive
 		float temmp = Mathf.Abs(targetPos[1]);
 		float temp2 = Mathf.Abs(targetPos[0]);

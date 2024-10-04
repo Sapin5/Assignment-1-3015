@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 
@@ -49,10 +50,10 @@ public class EnemyMovement : MonoBehaviour
 			float[] temp;
 
 			if(isLarge){
-				// Check if player is currently within a radius of X
+				// Check if player is currently within a radius of X  
 				// If the player is within the given radius, will chase player
-				// If not it will return to its Origin point
-				if(InRange(player, enemy)){
+				// If not it will return to its Origin point n
+				if(InRange(player, enemy, 5)){
 					// Calls angle to find angle of rotation to player
 					temp = angle(player, enemy);
 				}else{
@@ -64,10 +65,9 @@ public class EnemyMovement : MonoBehaviour
 			}
 
 			//Rotates towards Origin
-			Targetting(temp[2]);
-
+			Targetting(temp[2], InRange(player, enemy, 5));
 			// Moves towards Origin point
-			targetPos = new Vector2(temp[0], temp[1]);
+			targetPos = new Vector2(temp[0]/2, temp[1]/2);
 		}
 	}
 
@@ -104,7 +104,7 @@ public class EnemyMovement : MonoBehaviour
 
 	// Is used to determin wether or not player is within chasing range
 	// By calculating distance between two objects, using Dot product
-    public bool InRange(float[] player, float[] enemy){
+    public bool InRange(float[] player, float[] enemy, int validDist){
 		// Calculate distance using Pythagorean theorem
         float xvalue = Mathf.Pow(player[0]-enemy[0], 2);
         float yvalue = Mathf.Pow(player[1]-enemy[1], 2);
@@ -113,7 +113,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Mathf.Sqrt(xvalue+yvalue);
 
 		// Return true if the distance is less than or equal to 5 units
-        if (distance <= 5){
+        if (distance <= validDist){
             return true;
         }else{
             return false;
@@ -121,7 +121,7 @@ public class EnemyMovement : MonoBehaviour
     }
 
 	// Rotates Gameobject Towards Given Target
-	public void Targetting(float Rotation){
+	public void Targetting(float Rotation, bool inRange){
 		// Create a quaternion to rotate the enemy towards the target angle
 		Quaternion target = Quaternion.Euler(0, 0, Rotation);
 		// Smoothly rotate the enemy towards the target using Slerp
@@ -134,9 +134,11 @@ public class EnemyMovement : MonoBehaviour
 			_temp = transform.eulerAngles.z - 360f;
 		}
 		
-		if(Rotation <= _temp+20f && _temp-20f <= Rotation){
+		if(Rotation <= _temp+20f && _temp-20f <= Rotation && inRange){
+			gameObject.GetComponent<SpriteRenderer>().color = Color.red;
 			enemyShooter.SetActive(true);
 		}else{
+			gameObject.GetComponent<SpriteRenderer>().color = Color.white;
 			enemyShooter.SetActive(false);
 		}
 

@@ -40,8 +40,6 @@ public class StartGame : MonoBehaviour
         // calls playerHP to see how much they have left
         // Lose if HPis 0
         if(hp <= 0){
-            // ADjust Timescale to stop everythin that wasnt removed from moving
-            Time.timeScale = 0;
             //Sets GameEnds to true which will cause remaining Gameobjects
             //Remove themselves from game
              GameEnds = true;

@@ -22,7 +22,7 @@ public class Boost : MonoBehaviour
         float angelRot = playerObj.transform.eulerAngles.z;
         // calls totalspeed method in movement script to
         // get the distance from the mouse
-        float distance = Movement.singleton.totalspeed();
+        float distance = Movement.singleton.Totalspeed();
         
         // Enables and disables thruster sprites
         // based on which way ship is currently rotating

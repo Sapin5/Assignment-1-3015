@@ -15,7 +15,6 @@ public class LaserAbility : MonoBehaviour{
         switch (firingState){
             case FiringState.Ready:
                 if(isKeyPressed){
-                    Debug.Log("pressed");
                     firingState = FiringState.WindUp;
                 }
                 break;
@@ -37,7 +36,6 @@ public class LaserAbility : MonoBehaviour{
                 break;
 
             case FiringState.Winddown:
-                Debug.Log("Winding down");
                 if(timer==0){
                     GameObject cvfx = Instantiate(windUpanimation, transform.position,
                                  transform.rotation, player.transform);
@@ -70,7 +68,10 @@ public class LaserAbility : MonoBehaviour{
         
         foreach (var r in results) { 
             if(r.collider !=null){
-                r.collider.GetComponent<Health>().TakeEnemyDmg(2);
+                if(r.collider.TryGetComponent<Health>(out var hp))
+                {
+                    hp.TakeEnemyDmg(2);
+                }
             }
         }
     }
