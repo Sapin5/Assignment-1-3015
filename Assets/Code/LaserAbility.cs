@@ -1,16 +1,11 @@
-using System;
-using System.Runtime.CompilerServices;
-using UnityEditor;
 using UnityEngine;
 public class LaserAbility : MonoBehaviour{
-
     private bool isKeyPressed;
     public GameObject windUpanimation, player, laser;
     public enum FiringState {Ready, WindUp, Firing, Winddown, OnCooldown};
     public float timer;
     public FiringState firingState;
     public ContactFilter2D contactFilter;
-    public int layer;
     // Update is called once per frame
 
     void Update()
@@ -26,20 +21,29 @@ public class LaserAbility : MonoBehaviour{
                 break;
 
             case FiringState.WindUp:
+            
                 if(timer==0){
                     Instantiate(windUpanimation, transform.position,
                                  transform.rotation, player.transform);
                 }
+            
                 Timer(1f, FiringState.Firing);
                 break;
 
             case FiringState.Firing:
                 laser.SetActive(true);
-                Timer(1f, FiringState.Winddown);
+                Timer(2f, FiringState.Winddown);
                 CastSomerRays();
                 break;
 
             case FiringState.Winddown:
+                Debug.Log("Winding down");
+                if(timer==0){
+                    GameObject cvfx = Instantiate(windUpanimation, transform.position,
+                                 transform.rotation, player.transform);
+                    Renderer rend = cvfx.GetComponent<Renderer>();
+                    rend.material.color = Color.white;
+                }
                 laser.SetActive(false);
                 Timer(0.5f, FiringState.OnCooldown);
                 break;
@@ -48,7 +52,6 @@ public class LaserAbility : MonoBehaviour{
                 Timer(2f, FiringState.Ready);
                 break;
         }
-        
     }
 
     public void Timer(float delay, FiringState firingState){
@@ -67,7 +70,7 @@ public class LaserAbility : MonoBehaviour{
         
         foreach (var r in results) { 
             if(r.collider !=null){
-                r.collider.GetComponent<Health>().TakeEnemyDmg(1);
+                r.collider.GetComponent<Health>().TakeEnemyDmg(2);
             }
         }
     }
