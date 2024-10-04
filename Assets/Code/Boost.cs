@@ -22,8 +22,18 @@ public class Boost : MonoBehaviour
         float angelRot = playerObj.transform.eulerAngles.z;
         // calls totalspeed method in movement script to
         // get the distance from the mouse
-        float distance = Movement.singleton.Totalspeed();
-        
+
+        /*
+        This is causing issues 
+         float distance = Movement.singleton.Totalspeed();
+         Enables and disables main ship thruster Based on the distance to mouse
+        if(distance>=.5){
+            mainFlame.enabled=true;
+        }else{
+            mainFlame.enabled=false;
+        }
+        */
+    
         // Enables and disables thruster sprites
         // based on which way ship is currently rotating
 		if (angelRot <= 180f){
@@ -33,13 +43,5 @@ public class Boost : MonoBehaviour
             rightFlame.enabled=true;
             leftFlame.enabled=false;
 		}
-        
-        // Enables and disables main ship thruster Based on the distance to mouse
-        // hehehaa
-        if(distance>=.5){
-            mainFlame.enabled=true;
-        }else{
-            mainFlame.enabled=false;
-        }
     }
 }
