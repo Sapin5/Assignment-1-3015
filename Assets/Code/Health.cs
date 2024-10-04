@@ -36,4 +36,8 @@ public class Health : MonoBehaviour
             hpbar.transform.localScale = new Vector2(healthPoints/totalhp, 1);
         }
     }
+
+    public float RemainingHP(){
+        return healthPoints;
+    }
 }

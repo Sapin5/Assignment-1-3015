@@ -13,9 +13,11 @@ public class EnemyMovement : MonoBehaviour
 	public bool isLarge;
 	// player object
 	private GameObject playerObj = null;
+	public GameObject enemyShooter;
 
 	// runs at when program is initialized
 	void Start(){
+		enemyShooter.SetActive(false);
 		// finds the player object by looking for tag
 		playerObj = GameObject.FindGameObjectWithTag("Player");
 
@@ -62,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
 			}
 
 			//Rotates towards Origin
-			targetting(temp[2]);
+			Targetting(temp[2]);
 
 			// Moves towards Origin point
 			targetPos = new Vector2(temp[0], temp[1]);
@@ -119,27 +121,24 @@ public class EnemyMovement : MonoBehaviour
     }
 
 	// Rotates Gameobject Towards Given Target
-	public void targetting(float Rotation){
-	
+	public void Targetting(float Rotation){
 		// Create a quaternion to rotate the enemy towards the target angle
 		Quaternion target = Quaternion.Euler(0, 0, Rotation);
 		// Smoothly rotate the enemy towards the target using Slerp
 		transform.rotation = Quaternion.Slerp(transform.rotation, 
 											  target, Time.deltaTime*speed);
-	
-		/* ---To be implemented later---
-
-		float Rotation;
+		float _temp;
 		if (transform.eulerAngles.z <= 180f){
-			Rotation = transform.eulerAngles.z;
+			_temp = transform.eulerAngles.z;
 		} else {
-			Rotation = transform.eulerAngles.z - 360f;
+			_temp = transform.eulerAngles.z - 360f;
 		}
-
-		if(Rotation <= Rotation+5f && Rotation >= Rotation-5f){
-			//Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAaaAAAAAAAAAAAAAAAaaaaAAAA");
+		
+		if(Rotation <= _temp+20f && _temp-20f <= Rotation){
+			enemyShooter.SetActive(true);
+		}else{
+			enemyShooter.SetActive(false);
 		}
-		*/
 
 	}
 

@@ -13,12 +13,14 @@ public class StartGame : MonoBehaviour
     public static bool start = false;
     public static bool GameEnds = false;
     public static int bossCount = 2;
+    private float hp;
     // sets timescale to 0 to disable all game mechanics
     // befose the start button is hit
     // kind of brute force game start but it works
     void Awake(){
         Time.timeScale = 0;
         Endscreen.SetActive(false);
+        hp = playerObj.GetComponent<Health>().RemainingHP();
     }
 
     // Starts the game
@@ -36,19 +38,19 @@ public class StartGame : MonoBehaviour
     // calls once per frame
     void Update(){
         // calls playerHP to see how much they have left
-        //int hp = PlayerDeath.singleton.PlayerHP();
-
         // Lose if HPis 0
-        //if(hp <= 0){
+        if(hp <= 0){
             // ADjust Timescale to stop everythin that wasnt removed from moving
-           // T/ime.timeScale = 0;
-            // Sets GameEnds to true which will cause remaining Gameobjects
-            // Remove themselves from game
-          //  GameEnds = true;
+            Time.timeScale = 0;
+            //Sets GameEnds to true which will cause remaining Gameobjects
+            //Remove themselves from game
+             GameEnds = true;
 
             // Switches canvas to display lose message
-           // Endscreen.SetActive(true);
-       // }
+            Endscreen.SetActive(true);
+        }else{
+            hp = playerObj.GetComponent<Health>().RemainingHP();
+        }
 
         // Win if both Bosses are elimnated
         if(bossCount <= 0){
