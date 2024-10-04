@@ -1,84 +1,74 @@
+using System;
+using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEngine;
-public class LaserAbility : MonoBehaviour
-{
-    private bool isFiringButtonDown = false;
-    public GameObject windUpanimation, player;
+public class LaserAbility : MonoBehaviour{
 
+    private bool isKeyPressed;
+    public GameObject windUpanimation, player, laser;
     public enum FiringState {Ready, WindUp, Firing, Winddown, OnCooldown};
     public float timer;
     public FiringState firingState;
+    public ContactFilter2D contactFilter;
+    public int layer;
     // Update is called once per frame
+
     void Update()
-    {
-        isFiringButtonDown = Input.GetKeyDown(KeyCode.Space);
-
-        if(isFiringButtonDown){
-            firingState = FiringState.WindUp;
-            Debug.Log("keypressed");
-        }
+    {   
+        isKeyPressed = Input.GetKeyDown(KeyCode.Space);
         
-
         switch (firingState){
             case FiringState.Ready:
-                Debug.Log("ready");
+                if(isKeyPressed){
+                    Debug.Log("pressed");
+                    firingState = FiringState.WindUp;
+                }
                 break;
 
             case FiringState.WindUp:
-                Debug.Log("Winding up");
-                
                 if(timer==0){
-                    Instantiate(windUpanimation, transform.position, transform.rotation, player.transform);
+                    Instantiate(windUpanimation, transform.position,
+                                 transform.rotation, player.transform);
                 }
-
-                timer+=Time.deltaTime;
-                if(timer>1){
-                    firingState = FiringState.Firing;
-                    timer=0;
-                }
+                Timer(1f, FiringState.Firing);
                 break;
-
-
-
 
             case FiringState.Firing:
-                timer += Time.deltaTime;
-                if(timer > 1) {
-                    firingState = FiringState.Winddown;
-                    timer = 0;
-                }
-                
-                RaycastHit2D hit = Physics2D.Raycast(player.transform.position, 
-                                                player.transform.up, Mathf.Infinity);
-                if (hit.collider != null) {
-                    
-                    Debug.DrawLine(transform.position, hit.point);
-                    
-                    //Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
-                    
-                    Debug.Log("Hit Asteroid");
-                }
-
-                
-                Debug.Log("Firing");
+                laser.SetActive(true);
+                Timer(1f, FiringState.Winddown);
+                CastSomerRays();
                 break;
-
 
             case FiringState.Winddown:
-                Debug.Log("Winding Down");
-                timer+=Time.deltaTime;
-                if(timer>1){
-                    firingState = FiringState.OnCooldown;
-                    timer=0;
-                }
+                laser.SetActive(false);
+                Timer(0.5f, FiringState.OnCooldown);
                 break;
+
             case FiringState.OnCooldown:
-            Debug.Log("Cools Down");
-                timer+=Time.deltaTime;
-                if(timer>3){
-                    firingState = FiringState.Ready;
-                    timer=0;
-                }
+                Timer(2f, FiringState.Ready);
                 break;
+        }
+        
+    }
+
+    public void Timer(float delay, FiringState firingState){
+        timer+=Time.deltaTime;
+        if(timer>delay){
+            timer=0;
+            this.firingState = firingState;
+        }
+    }
+
+    public void CastSomerRays(){
+        RaycastHit2D[] results = new RaycastHit2D[10];
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up)*10f, Color.red);
+        Physics2D.Raycast(transform.position, transform.TransformDirection(Vector2.up), contactFilter, results);
+        laser.SetActive(true);
+        
+        foreach (var r in results) { 
+            if(r.collider !=null){
+                r.collider.GetComponent<Health>().TakeEnemyDmg(1);
+            }
         }
     }
 }

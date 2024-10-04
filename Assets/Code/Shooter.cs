@@ -32,7 +32,7 @@ public class Shooter : MonoBehaviour
     void Update()
     {
         // Equates to true when Space bar is pressed
-        isFiringButtonDown = Input.GetButton("Jump");
+        isFiringButtonDown = Input.GetMouseButton(0);
 
         // Increases to allow player to fire
         currentFireTimer += Time.deltaTime;

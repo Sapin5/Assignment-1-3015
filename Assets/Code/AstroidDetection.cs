@@ -3,18 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 
-public class Program
-{
-    public static void Main()
-    {
-        var letter = new List<char> { 'a', 'b' };
-        letter.Add('c');
-        letter.Add('d');
-        letter.Remove('c');
-        Console.WriteLine(String.Join(", ", letter)); // a, b, d
-    }
-}
-
 
 public class AstroidDetection : MonoBehaviour
 {
@@ -39,7 +27,6 @@ public class AstroidDetection : MonoBehaviour
             astroids.Add(collider);
             astroidCount+=1;
         }
-        Debug.Log($"Length of list is: {astroids.Count}\nAstroids int range is {astroidCount}");
     }
 
     public void OnTriggerExit2D(Collider2D collider){
@@ -47,6 +34,5 @@ public class AstroidDetection : MonoBehaviour
             astroids.Remove(collider);
             astroidCount-=1;
         }
-        Debug.Log($"Length of list is: {astroids.Count}\nAstroids int range is {astroidCount}");
     }
 }

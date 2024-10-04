@@ -16,18 +16,17 @@ public class Health : MonoBehaviour
     }
 
     public void Update(){
-        if(healthPoints<=0f){
+        if(healthPoints<=0){
             Instantiate(explosionGo, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }
     public void OnCollisionEnter2D(Collision2D collision){
-        Damage damageDealer = collision.gameObject.GetComponent<Damage>();
-        if (damageDealer != null)
+        if (collision.gameObject.TryGetComponent<Damage>(out var damageDealer))
         {
             float damage = damageDealer.GetDamage();
             TakeEnemyDmg(damage);
-            //Debugmsg();
+            
         }
     }
 
@@ -36,9 +35,5 @@ public class Health : MonoBehaviour
         if(hasHp){
             hpbar.transform.localScale = new Vector2(healthPoints/totalhp, 1);
         }
-    }
-
-    private void Debugmsg(){
-        Debug.Log(this.healthPoints);
     }
 }

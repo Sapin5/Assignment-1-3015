@@ -49,9 +49,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd499449f61734b4d8afe8626ff71bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
+  rotationSpeed: 10
   moveForce: {x: 7, y: 7}
 --- !u!114 &4126789927160327503
 MonoBehaviour:
@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 10
   explosionGo: {fileID: 7901304949833717338, guid: 9bd37f45d1668bc4782cd9c4bcc63fdf, type: 3}
+  hasHp: 1
+  hpbar: {fileID: 0}
 --- !u!114 &6220182059371620087
 MonoBehaviour:
   m_ObjectHideFlags: 0
