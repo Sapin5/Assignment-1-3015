@@ -41,6 +41,7 @@ public class AstroidDetection : MonoBehaviour
         if(collider.CompareTag("Red")){
             astroids.Add(collider);
             astroidCount+=1;
+            Debug.Log($"{astroids.Count} Astroids are in array\n{astroidCount} Astroids are in Range");
         }
     }
 
@@ -52,6 +53,7 @@ public class AstroidDetection : MonoBehaviour
         if(collider.CompareTag("Red")){
             astroids.Remove(collider);
             astroidCount-=1;
+            Debug.Log($"{astroids.Count} Are in array\n{astroidCount} Are in Range");
         }
     }
 }
